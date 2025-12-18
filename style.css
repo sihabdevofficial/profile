@@ -22,7 +22,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    box-sizing: border-box;
 }
 
 /* Will-change hints for animations */
@@ -40,110 +39,10 @@ body {
     backface-visibility: hidden;
 }
 
-/* ========== RESPONSIVE BREAKPOINTS ========== */
-
-/* Base mobile styles (up to 480px) */
-html {
-    font-size: 14px;
-}
-
-/* Small devices (landscape phones, 481px to 768px) */
-@media (min-width: 481px) {
-    html {
-        font-size: 15px;
-    }
-}
-
-/* Medium devices (tablets, 769px to 1024px) */
-@media (min-width: 769px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-/* Large devices (desktops, 1025px to 1200px) */
-@media (min-width: 1025px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-/* Extra large devices (large desktops, 1201px and up) */
-@media (min-width: 1201px) {
-    html {
-        font-size: 17px;
-    }
-}
-
-/* ========== RESPONSIVE UTILITIES ========== */
-
-/* Hide elements on specific screen sizes */
-.hide-mobile {
-    display: none;
-}
-
-.hide-desktop {
-    display: block;
-}
-
-@media (min-width: 769px) {
-    .hide-mobile {
-        display: block;
-    }
-    
-    .hide-desktop {
-        display: none;
-    }
-}
-
-/* Responsive container */
-.responsive-container {
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-@media (min-width: 640px) {
-    .responsive-container {
-        max-width: 640px;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-}
-
-@media (min-width: 768px) {
-    .responsive-container {
-        max-width: 768px;
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .responsive-container {
-        max-width: 1024px;
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-    }
-}
-
-@media (min-width: 1280px) {
-    .responsive-container {
-        max-width: 1280px;
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-}
-
-/* ========== RESPONSIVE COMPONENTS ========== */
-
 /* Non-critical styles */
 .marquee-container {
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-    overflow: hidden;
 }
 
 .marquee-content {
@@ -157,25 +56,9 @@ html {
     animation-play-state: paused;
 }
 
-/* Responsive marquee animation */
 @keyframes scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
-}
-
-/* Slower animation on mobile for performance */
-@media (max-width: 768px) {
-    .marquee-content {
-        animation: scroll 90s linear infinite;
-        gap: 0.75rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .marquee-content {
-        animation: scroll 120s linear infinite;
-        gap: 0.5rem;
-    }
 }
 
 /* Entrance Animation */
@@ -205,42 +88,32 @@ html {
     transform: translateY(0); 
 }
 
-/* Grid Texture - Responsive grid size */
+/* Toast */
+#toast {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translate(-50%, 100px);
+    opacity: 0;
+}
+
+#toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+/* Grid Texture */
 .bg-grid-math {
     background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
                       linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
-/* Smaller grid on mobile */
-@media (max-width: 768px) {
-    .bg-grid-math {
-        background-size: 30px 30px;
-    }
-}
-
-@media (min-width: 769px) {
-    .bg-grid-math {
-        background-size: 50px 50px;
-    }
-}
-
-/* Boxy Styles - Responsive border radius */
+/* Boxy Styles */
 .card-box {
     border-radius: 12px;
 }
 
 .box-sm {
     border-radius: 2px;
-}
-
-@media (max-width: 768px) {
-    .card-box {
-        border-radius: 10px;
-    }
-    
-    .box-sm {
-        border-radius: 1px;
-    }
 }
 
 /* Subtle Divider Line */
@@ -251,33 +124,12 @@ html {
     margin-bottom: 2rem;
 }
 
-@media (max-width: 768px) {
-    .section-divider {
-        margin-top: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .section-divider {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-}
-
 /* Custom Background Image Path */
 .card-bg-image {
     background-image: url('https://sihabdevofficial.github.io/profile/assets/profile_card_bg.JPG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-/* Adjust background size for mobile */
-@media (max-width: 768px) {
-    .card-bg-image {
-        background-size: contain;
-    }
 }
 
 /* --- PROFESSIONAL TOOLTIP STYLES --- */
@@ -318,18 +170,6 @@ html {
     visibility: visible;
 }
 
-/* Responsive tooltip */
-@media (max-width: 768px) {
-    .tooltip-container::before {
-        font-size: 9px;
-        padding: 4px 8px;
-        max-width: 200px;
-        white-space: normal;
-        word-break: break-word;
-        text-align: center;
-    }
-}
-
 .tooltip-container::after {
     content: none;
 }
@@ -345,13 +185,6 @@ html {
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s ease;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.95);
 }
 
 #resume-overlay.active {
@@ -362,33 +195,6 @@ html {
 .resume-frame-container {
     height: calc(100% - 60px);
     background: #000;
-    width: 100%;
-    margin: 0 auto;
-}
-
-/* Responsive resume frame */
-@media (max-width: 768px) {
-    .resume-frame-container {
-        height: calc(100% - 50px);
-    }
-    
-    #resume-overlay {
-        padding: 1rem;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .resume-frame-container {
-        max-width: 90%;
-        margin: 0 auto;
-    }
-}
-
-@media (min-width: 1025px) {
-    .resume-frame-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
 }
 
 @keyframes progress-loading {
@@ -422,69 +228,6 @@ html {
         width: 100%;
         height: 100%;
     }
-    
-    /* Ensure proper print layout */
-    @page {
-        margin: 0.5in;
-    }
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-    /* Disable hover effects on touch devices */
-    .marquee-content:hover {
-        animation-play-state: running;
-    }
-    
-    /* Increase tap targets for mobile */
-    button, 
-    .tooltip-container,
-    .clickable {
-        min-height: 44px;
-        min-width: 44px;
-    }
-    
-    /* Remove tooltips on touch devices or make them persistent */
-    .tooltip-container::before {
-        display: none;
-    }
-}
-
-/* High DPI screens */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .bg-grid-math {
-        background-image: linear-gradient(to right, rgba(255,255,255,0.03) 0.5px, transparent 0.5px),
-                          linear-gradient(to bottom, rgba(255,255,255,0.03) 0.5px, transparent 0.5px);
-    }
-}
-
-/* Dark mode support (already dark, but for consistency) */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #000000;
-        color: white;
-    }
-}
-
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-    
-    .marquee-content {
-        animation: none !important;
-    }
-    
-    .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-    }
 }
 
 /* Screen reader only */
@@ -511,101 +254,4 @@ html {
     clip: auto;
     background: #000;
     color: #fff;
-}
-
-/* Responsive typography */
-h1 {
-    font-size: 2.5rem;
-    line-height: 1.2;
-}
-
-h2 {
-    font-size: 2rem;
-    line-height: 1.3;
-}
-
-h3 {
-    font-size: 1.5rem;
-    line-height: 1.4;
-}
-
-p {
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-    
-    h2 {
-        font-size: 1.75rem;
-    }
-    
-    h3 {
-        font-size: 1.25rem;
-    }
-    
-    p {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.75rem;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-    }
-    
-    h3 {
-        font-size: 1.125rem;
-    }
-    
-    p {
-        font-size: 0.9rem;
-    }
-}
-
-/* Responsive spacing utilities */
-.p-mobile-sm {
-    padding: 0.5rem;
-}
-
-.p-mobile-md {
-    padding: 1rem;
-}
-
-.p-mobile-lg {
-    padding: 1.5rem;
-}
-
-@media (min-width: 769px) {
-    .p-mobile-sm,
-    .p-mobile-md,
-    .p-mobile-lg {
-        padding: 2rem;
-    }
-}
-
-/* Orientation specific styles */
-@media (orientation: landscape) and (max-height: 500px) {
-    .landscape-optimize {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-    }
-}
-
-/* Very small screens (smartwatches, etc) */
-@media (max-width: 320px) {
-    html {
-        font-size: 13px;
-    }
-    
-    .marquee-content {
-        gap: 0.25rem;
-    }
 }
