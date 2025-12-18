@@ -1,0 +1,257 @@
+/* Critical CSS - Inlined for fastest render */
+body {
+    background-color: #000000;
+    color: white;
+    overflow-x: hidden;
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+::selection {
+    background-color: #D4AF37;
+    color: black;
+}
+
+.noise-bg {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Performance optimizations */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Will-change hints for animations */
+.reveal {
+    will-change: opacity, transform;
+}
+
+.marquee-content {
+    will-change: transform;
+}
+
+/* Hardware acceleration */
+#main-card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Non-critical styles */
+.marquee-container {
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: scroll 60s linear infinite;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Entrance Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Text Fades */
+.fade-text { 
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+}
+
+.fade-out { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+}
+
+.fade-in { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* Toast */
+#toast {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translate(-50%, 100px);
+    opacity: 0;
+}
+
+#toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+/* Grid Texture */
+.bg-grid-math {
+    background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Boxy Styles */
+.card-box {
+    border-radius: 12px;
+}
+
+.box-sm {
+    border-radius: 2px;
+}
+
+/* Subtle Divider Line */
+.section-divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Custom Background Image Path */
+.card-bg-image {
+    background-image: url('./assets/Profile_Card_Bg.JPG'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- PROFESSIONAL TOOLTIP STYLES --- */
+.tooltip-container {
+    position: relative;
+}
+
+.tooltip-container::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    opacity: 0;
+    visibility: hidden;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #D4AF37;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'JetBrains Mono', monospace;
+    border-radius: 2px;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 60;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.tooltip-container:hover::before {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip-container::after {
+    content: none;
+}
+
+/* --- RESUME SYSTEM STYLES --- */
+#main-card {
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                height 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#resume-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+#resume-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.resume-frame-container {
+    height: calc(100% - 60px);
+    background: #000;
+}
+
+@keyframes progress-loading {
+    0% { width: 0%; left: 0; }
+    50% { width: 100%; left: 0; }
+    100% { width: 0%; left: 100%; }
+}
+
+.loading-bar {
+    height: 2px;
+    background: #D4AF37;
+    position: relative;
+    animation: progress-loading 2s infinite ease-in-out;
+}
+
+/* Print styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    #resume-overlay.active,
+    #resume-overlay.active * {
+        visibility: visible;
+    }
+    
+    #resume-overlay.active {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    clip: auto;
+    background: #000;
+    color: #fff;
+}
