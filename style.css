@@ -126,7 +126,7 @@ body {
 
 /* Custom Background Image Path */
 .card-bg-image {
-    background-image: url('./assets/Profile_Card_Bg.JPG'); 
+    background-image: url('./assets/profile_card_Bg.JPG'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
