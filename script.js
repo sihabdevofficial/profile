@@ -3,7 +3,7 @@ const CONFIG = {
     USER_EMAIL: "sihab.dev.official@gmail.com",
     USER_PORTFOLIO: "https://sihabxd.web.app",
     USER_WHATSAPP: "8801736999500",
-    RESUME_FILE_PATH: "./assets/sihab_hasan_resume.pdf",
+    RESUME_FILE_PATH: "https://sihabdevofficial.github.io/profile/assets/Sihab_Hasan_Resume.pdf",
     TITLES: ["Full-Stack Architect", "UI/UX Designer", "Open Source Contributor", "Creative Technologist"],
     TECH_STACK: [
         { name: 'TypeScript', icon: 'simple-icons:typescript', description: 'Strongly Typed Front/Backend Code', color: '#3178C6' },

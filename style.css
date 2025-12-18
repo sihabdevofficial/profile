@@ -126,7 +126,7 @@ body {
 
 /* Custom Background Image Path */
 .card-bg-image {
-    background-image: url('./assets/profile_card_bg.JPG'); 
+    background-image: url('https://sihabdevofficial.github.io/profile/assets/profile_card_bg.JPG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
